@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="OFF">
+	<properties>
+		<!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+		<property name="logPath">logs</property>
+	</properties>
+	<Appenders>
+		<Console name="consoleLog" target="SYSTEM_OUT">
+			<ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY" />
+			<!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss z} [%T] %level %C %M %L - %msg%xEx%n" />
+		</Console>
+
+		<!-- 按照每天生成日志文件 -->
+		<RollingFile name="rollingFileErrorLog" fileName="${logPath}/error.log" filePattern="${logPath}/error.%d{yyyy-MM-dd}.log.gz">
+			<ThresholdFilter level="error" onMatch="ACCEPT"	onMismatch="DENY" />
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss z} [%T] %level %C %M %L - %msg%xEx%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+			</Policies>
+			<!--日志文件保留天数-->
+			<DefaultRolloverStrategy>
+				<Delete basePath="${logPath}">
+					<IfFileName glob="*/error.*" />
+					<IfLastModified age="30d" />
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+		<RollingFile name="rollingFileInfoLog" fileName="${logPath}/info.log" filePattern="${logPath}/info.%d{yyyy-MM-dd}.log.gz">
+			<ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss z} [%T] %level %C %M %L - %msg%xEx%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+			</Policies>
+			<DefaultRolloverStrategy>
+				<Delete basePath="${logPath}">
+					<IfFileName glob="*/info.*" />
+					<IfLastModified age="30d" />
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<AppenderRef ref="consoleLog" />
+			<AppenderRef ref="rollingFileErrorLog" />
+			<AppenderRef ref="rollingFileInfoLog" />
+		</Root>
+	</Loggers>
+</Configuration>

@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package com.zd.baseframework.core.api.systemlog;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+option java_package = "com.zd.baseframework.core.api.systemlog";
+option java_outer_classname = "SystemLogProto";
+option java_multiple_files = true;
+
+service ISystemLogService{
+
+  //创建
+  rpc CreateSystemLog (CreateSystemLogRequest) returns (SystemLogOperatorResponse);
+
+  //列表查询
+  rpc ListSystemLogByCondition (ListSystemLogRequest) returns (ListSystemLogResponse);
+
+  //分页查询
+  rpc PageSystemLog (PageSystemLogRequest) returns (PageSystemLogResponse);
+
+}
+//请求参数
+message CreateSystemLogRequest{
+  google.protobuf.StringValue biz_id = 1;
+  google.protobuf.StringValue user_id = 2;
+  google.protobuf.StringValue code = 3;
+  google.protobuf.StringValue custom_code = 4;
+}
+
+message ListSystemLogRequest{
+  google.protobuf.StringValue biz_id = 1;
+  google.protobuf.StringValue code = 3;
+}
+
+message PageSystemLogRequest{
+  google.protobuf.Int32Value page_num = 1;
+  google.protobuf.Int32Value page_size = 2;
+  google.protobuf.StringValue sort_property = 3;
+  google.protobuf.StringValue sort_type = 4;
+  google.protobuf.StringValue biz_id = 5;
+  google.protobuf.StringValue code = 6;
+}
+
+//返回结果
+message  SystemLogOperatorResponse{
+  optional int32 status = 1;
+  optional string message = 2;
+  optional string data = 3;
+}
+
+message  ListSystemLogResponse{
+  repeated SystemLogDto data = 1;
+}
+
+message PageSystemLogResponse {
+  int32 count = 1;
+  int32 offset = 2;
+  int32 page_size = 3;
+  int32 current_page = 4;
+  repeated SystemLogDto data = 5;
+}
+
+message SystemLogDto {
+  string id = 1;
+  string biz_id = 2;
+  string user_id = 3;
+  string track_uid = 4;
+  string code = 5;
+  string custom_code = 6;
+  int32 state = 7;
+  google.protobuf.Timestamp ctime = 8;
+  google.protobuf.Timestamp utime = 9;
+  string cid = 10;
+  string cname = 11;
+
+  string status_name = 12;
+}
