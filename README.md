@@ -1,4 +1,4 @@
-# base-grpc-framework project
+# Base-grpc-framework project
 A framework base springBoot for grpc server develop. It also integration with Mapstrct、 Google-Grpc.
 You can use it as base framework that onle need to develop bussness code. Main function:
 
