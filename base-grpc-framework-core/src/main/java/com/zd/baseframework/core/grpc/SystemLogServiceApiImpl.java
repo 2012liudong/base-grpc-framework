@@ -39,7 +39,7 @@ public class SystemLogServiceApiImpl extends ISystemLogServiceGrpc.ISystemLogSer
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         }catch(AppException e){
-            //TODO 这行会返回StatusRuntimeException异常，后面可以改成异常拦截器在DelegateCall中实现
+            //TODO 这行会返回StatusRuntimeException异常，后面可以考虑改成异常拦截器在DelegateCall中实现
             responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asException());
         }
     }

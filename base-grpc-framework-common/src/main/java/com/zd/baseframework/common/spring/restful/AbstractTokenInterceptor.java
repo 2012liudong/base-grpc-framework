@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * @Description token拦截器
  *  -- extends AbstractTokenInterceptor
  *  -- @Component
+ *
  * @author liudong
  * @date 2022-09-17 12:15 a.m.
  */
@@ -46,25 +47,24 @@ public abstract class AbstractTokenInterceptor implements HandlerInterceptor {
 
 }
 
-/**
-@Slf4j
+
+/*@Slf4j
 @Component
-public class MvcInterceptorConfig implements WebMvcConfigurer {
+public class InterceptorRegister implements WebMvcConfigurer {
+
+    @Autowired
+    private AccessInterceptor accessInterceptor;
 
     @Autowired
     private TokenInterceptor tokenInterceptor;
 
     @Autowired
-    private AccessInterceptor accessInterceptor;
+    private ApperProperties apperProperties;
 
-    *//**
-     * 〈功能简述〉accessInterceptor要设置很多线程变量，所以要放在第一位。
-     * NOTICE：afterCompletion中的clear方法
-     *//*
+    *//*下面拦截器accessInterceptor必须放在第一位*//*
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(accessInterceptor).addPathPatterns("/api/v1/**");
-        registry.addInterceptor(tokenInterceptor).addPathPatterns("/api/v1/**");
+        registry.addInterceptor(accessInterceptor).addPathPatterns(apperProperties.getHttpApiPath());
+        registry.addInterceptor(tokenInterceptor).addPathPatterns(apperProperties.getHttpApiPath());
     }
-}
-*/
+}*/

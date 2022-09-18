@@ -1,4 +1,4 @@
-package com.zd.baseframework.common.spring.grpc.delegate;
+package com.zd.baseframework.common.spring.grpc.server;
 
 import cn.hutool.core.util.StrUtil;
 import com.google.protobuf.InvalidProtocolBufferException;

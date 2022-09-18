@@ -2,9 +2,19 @@ package com.zd.baseframework.common.spring.grpc;
 
 import com.zd.baseframework.common.constant.Constants;
 import io.grpc.*;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
+/**
+ * @Title: com.zd.baseframework.common.spring.grpc.AbstractGrpcClientInterceptor
+ * @Description 客户端拦截器
+ *  -- extends AbstractGrpcClientInterceptor
+ *  -- @Component, 有时会有冲突，子类可以不要这个标注
+ *
+ * @author liudong
+ * @date 2022-09-18 2:21 p.m.
+ */
 
-// TODO 客户端拦截器不生效
+@Slf4j
 public abstract class AbstractGrpcClientInterceptor implements ClientInterceptor {
     @Override
     public <ReqT, RespT> ClientCall<ReqT, RespT> interceptCall(MethodDescriptor<ReqT, RespT> methodDescriptor, CallOptions callOptions, Channel channel) {

@@ -2,10 +2,8 @@ package com.zd.baseframework.core.grpc.interceptor;
 
 import com.zd.baseframework.common.spring.ApperProperties;
 import com.zd.baseframework.common.spring.grpc.AbstractGrpcAccessInterceptor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
 
 /**
  * @Title: com.zd.baseframework.core.grpc.interceptor.GlobalServerInterceptorConfiguration
@@ -14,8 +12,7 @@ import org.springframework.core.annotation.Order;
  * @author liudong
  * @date 2022/1/13 4:40 PM
  */
-@Order(Ordered.LOWEST_PRECEDENCE)
-@Configuration(proxyBeanMethods = false)
+@Slf4j
 public class GlobalServerInterceptor extends AbstractGrpcAccessInterceptor {
 
     @Autowired

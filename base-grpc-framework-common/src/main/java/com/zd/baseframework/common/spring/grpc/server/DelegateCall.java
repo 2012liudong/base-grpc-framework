@@ -1,4 +1,4 @@
-package com.zd.baseframework.common.spring.grpc.delegate;
+package com.zd.baseframework.common.spring.grpc.server;
 
 import com.zd.baseframework.common.constant.Constants;
 import io.grpc.ForwardingServerCall;

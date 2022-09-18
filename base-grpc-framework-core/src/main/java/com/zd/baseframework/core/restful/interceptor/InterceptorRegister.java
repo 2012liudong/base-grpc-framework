@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Slf4j
 @Component
 public class InterceptorRegister implements WebMvcConfigurer {
+
     @Autowired
     private AccessInterceptor accessInterceptor;
 
