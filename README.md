@@ -2,14 +2,13 @@
 A framework base springBoot for grpc server develop. It also integration with Mapstrct、 Google-Grpc.
 You can use it as base framework that onle need to develop bussness code. Main function:
 
-1、__TrackLog：__ Support log-tracking function for each thread and provide LogGenerator API. The log attr includeing
-tid、appId、token、exec(elapsed time) ...;
+1、__TrackLog：__ Support log-tracking function for each thread and provide LogGenerator API
 
-2、__Interception：__ Definition some default interceptions，includeing grpc-client、grpc-server、mvcController;
+2、__Interception：__ Definition such as grpc-client、grpc-server、mvcController
 
-3、__ModelBeanCopy：__ Support model bean(entity、bo、vo、dto) convent to each other. Support grpc type and java type convent;
+3、__ModelBeanConvent：__ Support model bean convent to each other as also grpc type
 
-4、__DataOperTool：__ Base mybatis plus, make data operation easlier, specific pagination;
+4、__DataOperTool：__ Base mybatis plus that make data operation easlier, specific pagination;
 
 
 ## 1、Quick Start
