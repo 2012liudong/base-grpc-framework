@@ -18,7 +18,6 @@ You can use it as base framework that onle need to develop bussness code. Main f
 - __active:__ environment variable for app
   ```
   spring.profiles.active=dev
-
 - __jarFileName:__ to see file pom.xml, default base-grpc-framework-application.jar
   ```
   <artifactId>base-grpc-framework-parent</artifactId>
