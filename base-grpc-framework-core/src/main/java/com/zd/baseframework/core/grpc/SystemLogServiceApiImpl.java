@@ -26,8 +26,6 @@ public class SystemLogServiceApiImpl extends ISystemLogServiceGrpc.ISystemLogSer
 
     @Override
     public void createSystemLog(CreateSystemLogRequest request, StreamObserver<SystemLogOperatorResponse> responseObserver)  {
-//        String bizId = request.hasBizId()?request.getBizId().getValue():null;
-
         try{
             SystemLogBo systemLogBo = SystemLogDtoTranslator.INSTANCE.toBo(request);
             systemLogBo.setTrackUid(LogGenerator.trackUid());

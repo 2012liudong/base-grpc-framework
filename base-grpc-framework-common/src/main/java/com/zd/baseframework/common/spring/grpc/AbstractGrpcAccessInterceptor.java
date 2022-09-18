@@ -19,6 +19,8 @@ public abstract class AbstractGrpcAccessInterceptor {
     @GrpcGlobalServerInterceptor
     @Order(value = 10000)
     DelegateInterceptor delegateInterceptor(){
-        return new DelegateInterceptor();
+        return new DelegateInterceptor(tokenKey());
     }
+
+    protected abstract String tokenKey();
 }

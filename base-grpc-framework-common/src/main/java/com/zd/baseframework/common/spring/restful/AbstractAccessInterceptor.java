@@ -6,7 +6,6 @@ import cn.hutool.json.JSONUtil;
 import com.zd.baseframework.common.constant.Constants;
 import com.zd.baseframework.common.util.UUIDUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.MDC;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -47,6 +46,7 @@ public abstract class AbstractAccessInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        long   inTime =   System.currentTimeMillis();
         String ip1 = StrUtil.emptyToDefault(request.getHeader(X_FORWARDED_FOR), "");
         String ip2 = StrUtil.emptyToDefault(request.getHeader(PROXY_CLIENT_IP), "");
         String ip3 = StrUtil.emptyToDefault(request.getHeader(WL_PROXY_CLIENT_IP), "");
@@ -59,9 +59,8 @@ public abstract class AbstractAccessInterceptor implements HandlerInterceptor {
         String token =    StrUtil.emptyToDefault(request.getHeader(tokenKey()), "");
         String agent =    StrUtil.emptyToDefault(request.getHeader(Constants.USERAGENT), "");
         String uri =      request.getRequestURI();
-        long   inTime =   System.currentTimeMillis();
 
-        if (StringUtils.isEmpty(trackId)){
+        if (StrUtil.isEmpty(trackId)){
             trackId = UUIDUtil.trackingId(System.nanoTime());
         }
         MDC.put(Constants.TID, trackId);
@@ -88,7 +87,7 @@ public abstract class AbstractAccessInterceptor implements HandlerInterceptor {
 
         StringBuilder accessLog = new StringBuilder()
                 .append("tid=").append(trackId)
-                .append(" app=").append(appCode)
+                .append(" appid=").append(appCode)
                 .append(" token=").append(token)
                 .append(" ip=").append(ip)
                 .append(url)

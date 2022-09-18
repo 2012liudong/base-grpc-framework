@@ -1,10 +1,11 @@
 package com.zd.baseframework.common.spring.grpc.delegate;
 
 import cn.hutool.core.util.StrUtil;
+import com.zd.baseframework.common.constant.Constants;
 import com.zd.baseframework.common.util.UUIDUtil;
 import io.grpc.*;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.MDC;
 
 /**
  * @Title: com.zd.baseframework.core.core.common.interceptor.delegate.DelegateInterceptor
@@ -21,48 +22,64 @@ import org.apache.commons.lang3.StringUtils;
  * >inTime：接收到请求的timestamp
  * >exec：此次请求的执行总时间
  *
+ * 拦截器执行顺序：
+ * DelegateInterceptor.interceptCall().start
+ * DelegateCall.request()
+ * DelegateInterceptor.interceptCall().end
+ * DelegateCallListener.onMessage()
+ *
+ * DelegateCall.sendHeaders()
+ * DelegateCall.sendMessage()
+ *
+ * DelegateCall.close()
+ * DelegateCallListener.onComplete()
+ *
  * @author liudong
  * @date 2022/1/13 4:44 PM
  */
 @Slf4j
 public class DelegateInterceptor implements ServerInterceptor {
 
+    private String tokenName = "TOKEN";
+    public DelegateInterceptor(String tokenName){
+        this.tokenName = tokenName;
+    }
+
     @Override
     public <ReqT, RespT> ServerCall.Listener<ReqT> interceptCall(ServerCall<ReqT, RespT> serverCall, Metadata metadata, ServerCallHandler<ReqT, RespT> serverCallHandler) {
         long inTime = System.currentTimeMillis();
 
-        String trackId = metadata.get(CONST.TRACKID_METADATA_KEY);
-        if (StringUtils.isEmpty(trackId)){
+        String ip =      StrUtil.emptyToDefault(serverCall.getAttributes().get(Grpc.TRANSPORT_ATTR_REMOTE_ADDR).toString(), "");
+        String trackId = StrUtil.emptyToDefault(metadata.get(CONST.METADATA_KEY_TRACKID), "");
+        String appCode = StrUtil.emptyToDefault(metadata.get(CONST.METADATA_KEY_APPCODE), Constants.DEFAULT_APP_NAME);
+        String token =   StrUtil.emptyToDefault(metadata.get(tokenKey()), "");
+        String uri =     serverCall.getMethodDescriptor().getFullMethodName();
+        if (StrUtil.isEmpty(trackId)){
             trackId = UUIDUtil.trackingId(System.nanoTime());
         }
 
-        StringBuilder delegateLog = new StringBuilder();
-        delegateLog.append("tid=").append(trackId)
-//                .append(CONST.SPLIT_BLANK).append("appid=").append(TokenParser.appId())
-                .append(" ip=").append(serverCall.getAttributes().get(Grpc.TRANSPORT_ATTR_REMOTE_ADDR))
-                .append(" uri=").append(serverCall.getMethodDescriptor().getFullMethodName())
-                .append(" inTime=").append(inTime)
-                .append(StrUtil.SPACE);
+        MDC.put(Constants.TID, trackId);
+        MDC.put(Constants.IP, ip);
+        MDC.put(Constants.INTIME, StrUtil.toString(inTime));
+        MDC.put(Constants.APPCODE, appCode);
+        MDC.put(Constants.TOKEN, token);
+        MDC.put(Constants.URI, uri);
 
-        //保存请求时间和相关日志到请求线程中，供后面拦截器打印用
-        Context ctx = Context.current();
-        ctx = ctx.withValue(CONST.TRACK_INTIME_KEY, String.valueOf(inTime));
-        ctx = ctx.withValue(CONST.TRACK_LOG_KEY, delegateLog.toString());
-        ctx = ctx.withValue(CONST.TRACK_LOG_UID_KEY, trackId);
-
-        //log.info(delegateLog.toString());
+        //保存请求时间和相关日志到请求线程中，供后面拦截器打印用，与MDC是等价的
+//        Context ctx = Context.current();
+//        ctx = ctx.withValue(CONST.TRACK_LOG_URI_KEY, uri);
+//        ctx = ctx.withValue(CONST.TRACK_LOG_UID_KEY, trackId);
+//        ctx = ctx.withValue(CONST.TRACK_LOG_INTIME_KEY, String.valueOf(inTime));
+//        ctx = ctx.withValue(CONST.TRACK_LOG_KEY, delegateLog.toString());
 
         //下面设置的值必须为原始值，不能自定义的变量，保持参数的纯净
         DelegateCall<ReqT, RespT> serverCallDelegate = new DelegateCall<>(serverCall);
         DelegateCallListener<ReqT, RespT> delegateCallListener = new DelegateCallListener<>(serverCallHandler.startCall(serverCallDelegate, metadata));
-        delegateCallListener.setServerCall(serverCall);
-
-        return Contexts.interceptCall(ctx, serverCallDelegate, metadata, serverCallHandler);
+        return delegateCallListener;
+//        return Contexts.interceptCall(ctx, serverCallDelegate, metadata, serverCallHandler);
     }
 
-    private long genLogId(long param){
-        long nowTime = System.currentTimeMillis();
-        long logId = nowTime & 281474976710655L | (param >> 8 & 65535L) << 47;
-        return logId;
+    private Metadata.Key<String> tokenKey(){
+        return Metadata.Key.of(Constants.APPCODE, Metadata.ASCII_STRING_MARSHALLER);
     }
 }
