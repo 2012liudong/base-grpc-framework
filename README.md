@@ -11,7 +11,7 @@
 
 #### [Docment and Course](  https://blog.51cto.com/arch/5386304)
 
-##  一、Quick Start
+##  一、Start
 - __Step-1、Create demo database:__ 
   ```
   #---------- create database ----------
