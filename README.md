@@ -1,57 +1,60 @@
 # Base-grpc-framework project
-&emsp;&emsp;A framework base springBoot for grpc server develop. It also integration with Mapstrct、 Google-Grpc.
-You can use it as base framework that onle need to develop bussness code. Main function:
+#### &emsp;&emsp;A framework base on springBoot for grpc server develop. It also integration with Mapstrct、 Google-Grpc.You can use it as base framework that onle need to develop bussness code. Mainly function:
 
-&emsp;&emsp; - __TrackLog：__ Support log-tracking function for each thread and provide LogGenerator API
+&emsp;&emsp; - __TrackLog：__ Support log tracking for each thread
 
-&emsp;&emsp; - __Interception：__ Definition such as grpc-client、grpc-server、mvcController
+&emsp;&emsp; - __Interception：__ Such as grpc-client、grpc-server、mvcController
 
-&emsp;&emsp; - __ModelBeanConvent：__ Support model bean convent to each other as also grpc type
+&emsp;&emsp; - __ModelBean：__ Support model bean convent to each other, also proto
 
-&emsp;&emsp; - __DataOperTool：__ Base mybatis plus that make data operation easlier, specific pagination;
+&emsp;&emsp; - __DataTool：__ Make data operation easlier, specific pagination
 
+#### [Docment and Course](  https://blog.51cto.com/arch/5386304)
 
-## 1、Quick Start
-> step-1、create demo database 
-
-- __createMysqlDB:__ 
+##  一、Quick Start
+- __Step-1、Create demo database:__ 
   ```
-  jdbc:mysql://127.0.0.1:3306/badCase?characterEncoding=utf8
-  username: root
-  password: 12345678
+  #---------- create database ----------
+   dbName:badCase
+   port:3306
+   username: root
+   password: 12345678
   
-- __initDbTable:__ 
-  ```
+  #---------- create table -------------
   create table t_sys_record
   (
     id          varchar(32)            not null primary key,
-    biz_id      varchar(32) default '' null comment '业务ID',
-    user_id     varchar(32)            null comment '操作用户ID',
-    track_uid   varchar(128)           null comment '链路ID',
-    code        varchar(32)            null comment '操作代码',
-    custom_code varchar(32)            null comment '操作2级代码',
-    status      int                    null comment '记录状态:1可查询，0不可查询',
-    ctime       datetime               null,
-    utime       datetime               null,
-    cid         varchar(32)            null,
-    cname       varchar(32)            null
-  )
-
-> step-2、Run through jar : java -jar -Dspring.profiles.active=dev  base-grpc-framework-application.jar
-
-- __active:__ environment variable for app
+    biz_id      varchar(32) default '' null comment 'business id',
+    user_id     varchar(32)            null comment 'operator userId',
+    track_uid   varchar(128)           null comment 'tracklog UUID',
+    code        varchar(32)            null comment 'primary operator code',
+    custom_code varchar(32)            null comment 'slave operator code ',
+    status      int                    null comment '1: enable, 0:disable',
+    ctime       datetime               null comment 'create time',
+    utime       datetime               null comment 'update time',
+    cid         varchar(32)            null comment 'creater id',
+    cname       varchar(32)            null comment 'creater name'
+  );
   ```
-  spring.profiles.active=dev
-- __jarFileName:__ definition in pom.xml file. default name is 'base-grpc-framework-application.jar'
+- __Step-2、Run server:__ also can run com.zd.baseframework.BaseFrameworkApplication.java with config active profiles=dev
   ```
-  <artifactId>base-grpc-framework-parent</artifactId>
+  java -jar -Dspring.profiles.active=dev base-grpc-framework-application-1.0-SNAPSHOT.jar
+  ```
+- __Step-3、Client Test:__ 
+  ```
+  open http://localhost:18080/swagger-ui.html
+  ```
+
+## 二、Compile
+  ```
+  cd base-grpc-framework
+  mvn clean install -Dmaven.test.skip=true
   
-Also can run by mainClass(com.zd.baseframework.BaseFrameworkApplication.java) with config active.profiles=dev 
+  cd base-grpc-framework-application
+  mvn clean package -Dmaven.test.skip=true
+  ```
 
-## 2、 Document
-&emsp;&emsp;- [Docment and Course](  https://blog.51cto.com/arch/5386304)
-
-## 3、 Configuration
+## 三、 Configuration
  ```
 # app server config
 server:
@@ -124,7 +127,17 @@ swagger-config:
   base-package: com.zd.baseframework.core.restful # multi package split with comma(,)
   authorization-key-name: token
  ```
-
+---
+## FAQ
+#### 1、Can't find Grpc-proto object at base-grpc-framework-core module?
+```
+cd base-grpc-framework-api
+mvn protobuf:compile -f pom.xml
+mvn protobuf:compile-custom -f pom.xml
+```
 ## Change logs
-
-- V0.1： 2022-09-01 initialize
+- Release-v0.0.1
+  ```
+  The First release version
+  ```
+- .....
