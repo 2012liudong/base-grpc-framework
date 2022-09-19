@@ -13,23 +13,21 @@ public class BaseMetaObjectHandler implements MetaObjectHandler {
 
     @Override
     public void insertFill(MetaObject metaObject) {
-        // 设置创建与更新时间
         Date nowTime = new Date();
         if (metaObject.hasGetter("ctime")) {
-
-            // 记录创建信息
+            // record create time
             this.setFieldValByName("ctime", nowTime, metaObject);
         }
         if (metaObject.hasGetter("utime")) {
-            // 记录更新时间
+            // record last modify time
             this.setFieldValByName("utime", nowTime, metaObject);
         }
         if (metaObject.hasGetter("cid")) {
-            // 记录操作人
+            // record creater id
             this.setFieldValByName("cid", MDC.get(Constants.USER_PARAM_ID), metaObject);
         }
         if (metaObject.hasGetter("cname")) {
-            // 记录操作人
+            // record creater name
             this.setFieldValByName("cname", MDC.get(Constants.USER_PARAM_USERNAME), metaObject);
         }
     }

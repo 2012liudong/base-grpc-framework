@@ -28,7 +28,7 @@ import java.util.List;
 
 /**
  * @Title: com.zd.baseframework.config.SwaggerConfig
- * @Description 用于swagger测试：访问地址：http://localhost:18080/swagger-ui.html
+ * @Description swagger url：http://localhost:18080/swagger-ui.html
  * @author liudong
  * @date 2022/6/15 6:07 PM
  */
@@ -70,11 +70,11 @@ public class SwaggerConfig {
                 ApiKeyVehicle.HEADER.getValue());
     }
 
-    /**设置全局参数*/
+    /**setting global request paramters*/
     private List<Parameter> globalParameters(){
         List<Parameter> pars = new ArrayList<>();
 
-        //构建参数，兼容token设置
+        //build token
         ParameterBuilder tokenPar = new ParameterBuilder();
         tokenPar.name(swaggerProperties.authorizationKeyName)
                 .description("Authorization-token")
@@ -93,7 +93,7 @@ public class SwaggerConfig {
 
     private Function<Class<?>, Boolean> handlerPackage(final String basePackage) {
         return input -> {
-            // 循环判断匹配
+            // match restful basePackage path
             for (String strPackage : basePackage.split(",")) {
                 boolean isMatch = input.getPackage().getName().startsWith(strPackage);
                 if (isMatch) {

@@ -12,11 +12,13 @@ import lombok.Data;
 @Data
 public class PageResponse<T> extends ListResponse<T> {
 
-    /*偏移位置，用于内部计算*/
+    /**record offset position for internal calculation*/
     private Integer offset;
-    /*每页多少条*/
+
+    /**size of one page*/
     private Integer pageSize;
-    /*当前第几页*/
+
+    /**number of pages*/
     private Integer currentPage;
 
     public PageResponse() {
@@ -38,11 +40,11 @@ public class PageResponse<T> extends ListResponse<T> {
         this.currentPage = currentPage;
     }
 
-    /**这个构建函数是为了适应mybatis插件的特殊参数类型， 在mybatis中属性对应关系如下：
-     *  Math.toIntExact(total) // IPage.getTotal()
-     *  Math.toIntExact(offset) // IPage.offset()
-     *  Math.toIntExact(pageSize) // IPage.getSize()
-     *  Math.toIntExact(currentPage)); // IPage.getCurrent()
+    /** compatibility mybatis plug， attribute mapping as below:：
+     *  -Math.toIntExact(total) // IPage.getTotal()
+     *  -Math.toIntExact(offset) // IPage.offset()
+     *  -Math.toIntExact(pageSize) // IPage.getSize()
+     *  -Math.toIntExact(currentPage)); // IPage.getCurrent()
      * */
     public PageResponse(Integer status, String msg, T data, Long total, Long offset, Long pageSize, Long currentPage) {
         this(status, msg, data

@@ -3,7 +3,7 @@ package com.zd.baseframework.common.exception;
 /**
  * @author liudong
  * @Title: AppException
- * @Description 基础异常类，用于处理普通业务上的异常，直接抛送即可，定义不同的异常类主要是用于区别异常的类型
+ * @Description base business exception
  * @date 2022/1/17 4:52 PM
  */
 public class AppException extends RuntimeException {

@@ -13,7 +13,7 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <!--grpc依赖-->
+        <!--grpc server-->
         <dependency>
             <groupId>net.devh</groupId>
             <artifactId>grpc-server-spring-boot-starter</artifactId>
@@ -27,13 +27,13 @@
             <artifactId>protobuf-java</artifactId>
         </dependency>
 
-        <!--gprc依赖实现本地grpc调用-->
+        <!--gprc client-->
         <dependency>
             <groupId>net.devh</groupId>
             <artifactId>grpc-client-spring-boot-starter</artifactId>
         </dependency>
 
-        <!--项目依赖-->
+        <!--base-grpc-framework project depenency-->
         <dependency>
             <groupId>com.zd</groupId>
             <artifactId>base-grpc-framework-common</artifactId>
@@ -56,13 +56,13 @@
             <version>${project.parent.version}</version>
         </dependency>
 
-        <!--nacos相关-->
+        <!--nacos-->
         <dependency>
             <groupId>com.alibaba.boot</groupId>
             <artifactId>nacos-config-spring-boot-starter</artifactId>
         </dependency>
 
-        <!--mybatis相关依赖，mysql驱动-->
+        <!--mybatis，mysql device-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -76,8 +76,8 @@
             <artifactId>druid-spring-boot-starter</artifactId>
         </dependency>
 
-        <!--===========以下全是工具类和工具框架=========================-->
-        <!--mapStruct依赖，代码拷贝-->
+        <!--===========toold and third framework=========================-->
+        <!--mapStruct-->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
@@ -95,13 +95,13 @@
             <scope>compile</scope>
         </dependency>
 
-        <!--hutool工具类-->
+        <!--hutool-->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
 
-        <!-- 使用log4j2，性能更高 -->
+        <!-- log4j2，better performance -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
@@ -117,7 +117,7 @@
     </dependencies>
 
     <build>
-        <!--resources配置解决mybatis 的mapperXml配置在java路径不被扫描的问题 -->
+        <!--resources path config：slove cant not find .properties file, also mybatis XXmapper.xml -->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -129,7 +129,7 @@
         </resources>
 
         <plugins>
-            <!--处理lombok和mapstruft 加载顺序的问题 防止在生成的实体没有属性-->
+            <!--make lombok and mapstruct plug-ins in load order.solve model bean that be generated without no proterty -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

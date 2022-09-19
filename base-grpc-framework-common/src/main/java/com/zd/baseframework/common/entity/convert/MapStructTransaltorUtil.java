@@ -9,7 +9,8 @@ import java.time.format.DateTimeFormatter;
 /**
  * @author shaocx
  * @Title: com.zd.baseframework.common.entity.mapstruct
- * @Description 通用mapstrct工具类，此类不能随便移位置，因为多数转换的代码是写死在字符串中的，采用imports={MapStructMapperUtil.class}方式引入
+ * @Description common mapstrut tool class. Notice the classpath of MapStructTransaltorUtil when use @Mapping(expression) annocation of Mapstruct.
+ *              using 'imports={MapStructMapperUtil.class}'
  * @date 2022/1/7 下午3:40
  */
 public class MapStructTransaltorUtil {

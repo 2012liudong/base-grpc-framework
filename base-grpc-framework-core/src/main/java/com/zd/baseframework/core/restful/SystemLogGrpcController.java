@@ -31,7 +31,7 @@ public class SystemLogGrpcController {
             @RequestParam(value="code") String code,
             @RequestParam(value="custom_code", required=false) String customCode){
         try{
-            //构建请求参数
+            //build grpc request dto
             CreateSystemLogRequest createSysRecordRequest  = CreateSystemLogRequest.newBuilder()
                     .setBizId(StringValue.of(bizId))
                     .setUserId(StringValue.of(userId))
@@ -39,7 +39,7 @@ public class SystemLogGrpcController {
                     .setCustomCode(StringValue.of(customCode))
                     .build();
 
-            //正常此处需要判断response返回的state值
+            //process grpc server response, better handle the value of response state with if statement firstly
             SystemLogOperatorResponse response = iSysRecordServiceBlockingStub.createSystemLog(createSysRecordRequest);
             return BaseResponse.success(response.getData());
         }catch(StatusRuntimeException e){
@@ -50,7 +50,7 @@ public class SystemLogGrpcController {
     @PostMapping("/v1/list")
     public ListResponse<List<SystemLogVo>> list(@RequestBody SystemLogQueryRequest pageRequest){
         try{
-            //构建查询参数
+            //build grpc request dto
             ListSystemLogRequest listSystemLogRequest  = SystemLogGrpcTranslator.INSTANCE.toDto(pageRequest);
 
             ListSystemLogResponse listSystemLogResponse = iSysRecordServiceBlockingStub.listSystemLogByCondition(listSystemLogRequest);
@@ -65,18 +65,18 @@ public class SystemLogGrpcController {
     @PostMapping("/v1/page")
     public PageResponse<List<SystemLogVo>> page(@RequestBody SystemLogQueryRequest pageRequest){
         try{
-            //得到请求参数，转换成proto，请求grpc得到查询结果
+            //build grpc request dto
             PageSystemLogRequest requestForGrpc = SystemLogGrpcTranslator.INSTANCE.toPageDto(pageRequest);
             PageSystemLogResponse gRpcresponse = iSysRecordServiceBlockingStub.pageSystemLog(requestForGrpc);
 
-            //处理返回值
+            //process grpc server response
             PageResponse<List<SystemLogVo>> pageResponse = PageResponse.success();
             pageResponse.setTotal(gRpcresponse.getCount());
             pageResponse.setPageSize(gRpcresponse.getPageSize());
             pageResponse.setCurrentPage(gRpcresponse.getCurrentPage());
             pageResponse.setOffset(gRpcresponse.getOffset());
 
-            //添充列表数据
+            //add data record to pageResponse
             List<SystemLogVo> vos = SystemLogGrpcTranslator.INSTANCE.toVo(gRpcresponse.getDataList());
             pageResponse.setData(vos);
 

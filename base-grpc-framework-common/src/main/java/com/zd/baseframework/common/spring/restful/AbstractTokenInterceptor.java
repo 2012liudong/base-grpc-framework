@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * @Title: com.zd.baseframework.common.spring.interceptor.AbstractTokenInterceptor
- * @Description token拦截器
+ * @Description TokenInterceptor
  *  -- extends AbstractTokenInterceptor
  *  -- @Component
  *

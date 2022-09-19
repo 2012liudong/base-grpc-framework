@@ -48,7 +48,7 @@
         </extensions>
 
         <plugins>
-            <!--grpc插件，用于IDEA集成使用-->
+            <!--grpc plug for integrating idea-IDE-->
             <plugin>
                 <groupId>org.xolstice.maven.plugins</groupId>
                 <artifactId>protobuf-maven-plugin</artifactId>
@@ -62,8 +62,8 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>compile</goal><!--对应插件的complie命令-->
-                            <goal>compile-custom</goal><!--对应插件的complie-custom命令，需要本地配置插件-->
+                            <goal>compile</goal><!--for complie command of protobuf-maven-plugin-->
+                            <goal>compile-custom</goal><!--for complie-custom command of protobuf-maven-plugin-->
                         </goals>
                     </execution>
                 </executions>

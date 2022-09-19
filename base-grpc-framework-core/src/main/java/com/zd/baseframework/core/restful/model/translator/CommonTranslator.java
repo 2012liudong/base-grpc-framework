@@ -10,7 +10,8 @@ import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.factory.Mappers;
 
 /**
- * @Description 通用的对象转换器，封装请求参数req对象与bo对象间的相互转换，比如分页参数
+ * @Title: com.zd.baseframework.core.restful.model.translator.CommonTranslator
+ * @Description common convertor，between request object and service object
  * @author liudong
  * @date 2022-07-21 11:15 a.m.
  */

@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class MybatisPlugs {
 
-    /*设置ID生成器*/
+    /*define ID generator */
     @Bean
     public IdentifierGenerator idGenerator() {
         return new DefaultIdentifierGenerator();
     }
 
-    /*设置mybatis插件*/
+    /*config mybatis plugs*/
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();

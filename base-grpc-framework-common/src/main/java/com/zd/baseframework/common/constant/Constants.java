@@ -3,12 +3,11 @@ package com.zd.baseframework.common.constant;
 import cn.hutool.core.util.StrUtil;
 
 /**
- * 存放与业务无关的一些常量
  * Created by liudong on 2017/5/26.
  */
 public interface Constants {
 
-    /*用于拼接字符串，斜线。 更多可查看 StrPool.java 和CharPool.java*/
+    /*for string, see more in StrPool.java and CharPool.java*/
     String PATH_SEPERATE = StrUtil.SLASH;
 
     String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
@@ -28,7 +27,7 @@ public interface Constants {
     int DEFAULT_PAGE_NUM = 1;
 
 
-    /*interceptor相关, 系统内部使用的变量名*/
+    /*interceptor: only use server module*/
     String DEFAULT_APP_NAME = "noset";
 
     String TID = "TID";

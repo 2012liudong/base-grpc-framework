@@ -12,10 +12,6 @@
     <artifactId>base-grpc-framework-application</artifactId>
     <packaging>jar</packaging>
 
-    <properties>
-        <swagger.version>1.9.0.RELEASE</swagger.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

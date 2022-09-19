@@ -11,7 +11,7 @@ import java.util.TimeZone;
 
 /**
  * @Title: com.zd.baseframework.BaseFrameworkApplication
- * @Description 启动类，此类注解的值内容可以从外部的配置系统中配置
+ * @Description Springboot MainClass，suggest to use a config database system, such as nacos.
  * @author liudong
  * @date 2022/6/13 10:41 PM
  */

@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "app-properties", ignoreUnknownFields = true)
 public class ApperProperties {
 
-    /*页面传递的token的keyName*/
+    /*token keyName*/
     private String tokenKey = "TOKEN";
 
-    /*需拦截的URL地址，支持正则*/
+    /*URL to be intercepted, support regular*/
     private String httpApiPath = "/*";
 
 }

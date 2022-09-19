@@ -20,7 +20,7 @@ import java.util.Collections;
 public class HttpClientUtil {
 
     /**
-     * 发送GET请求(form表单格式）获取返回数据
+     * GET (form）
      */
     public static String getWithForm(String url, String params, String token) throws AppException {
         try {
@@ -60,7 +60,7 @@ public class HttpClientUtil {
     }
 
     /**
-     * 发送POST请求获取json返回数据
+     * POST (json）
      */
     public static String postWithJson(String url, String params, String token) throws AppException {
         try {
@@ -81,7 +81,7 @@ public class HttpClientUtil {
     }
 
     /**
-     * 发起http请求
+     * send http request
      */
     private static <T> ResponseEntity<T> request(
             HttpMethod httpMethod, String mediaType, String url, T params, String token, Class<T> response) throws RestClientException {

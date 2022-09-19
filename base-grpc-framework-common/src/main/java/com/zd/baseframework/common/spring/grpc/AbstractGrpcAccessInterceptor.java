@@ -11,24 +11,25 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 
 /**
- * @Title: com.zd.baseframework.core.core.common.interceptor.delegate.DelegateInterceptor
- * @Description 访问日志拦截器，此拦截器只打印日志并不做真正拦截，只输出原始参数。在
+ * @Title: com.zd.baseframework.core.core.common.interceptor.delegate.AbstractGrpcAccessInterceptor
+ * @Description AccessInterceptor
  *  -- extends AbstractGrpcAccessInterceptor
- *  -- @Component ,有时会有冲突，子类可以不要这个标
- * 在DelegateInterceptor和DelegateCall中分别输出：请求日志，格式如下：
- * tid=7537479305976007099 appid=Bearer ip=/127.0.0.1:64446 uri=universe.core.cases.ICaseService/GetCaseByCaseNum inTime=1642129705403
- * tid=7537479305976007099 appid=Bearer ip=/127.0.0.1:64446 uri=universe.core.cases.ICaseService/GetCaseByCaseNum inTime=1642129705403 exec=290
+ *  -- @Component ,subclasses don't have to use this annocation
  *
- * >tid：trackid,且于跟踪栈请求
- * >appid：接入应用的id
- * >ip：访问端的ip地址和端口号
- * >uri：客户端此次访问的uri
- * >param：请求的原始参数
- * >inTime：接收到请求的timestamp
- * >exec：此次请求的执行总时间
+ * Tracklog format：
+ * tid=8633542882073873365 app=app ip=0:0:0:0:0:0:0:1 uri=/systemlog/v1/list_systemlog controller=com.zd.baseframework.core.controller.core.SystemLogController#listSystemLog(SystemLogQueryRequest) inTime=1658916277205
+ * tid=7532975723136214833 exec=31284
+ *
+ * >tid：trackid,Used to trace stack requests
+ * >appid：client app id
+ * >ip：client ip
+ * >uri：request uri
+ * >param：request parameter
+ * >inTime：time of begin process
+ * >exec：total time of request
  *
  *
- * 拦截器执行顺序：
+ * The interceptor process order：
  * DelegateInterceptor.interceptCall().start
  * DelegateCall.request()
  * DelegateInterceptor.interceptCall().end
@@ -65,14 +66,13 @@ public abstract class AbstractGrpcAccessInterceptor implements ServerInterceptor
         MDC.put(Constants.TOKEN, token);
         MDC.put(Constants.URI, uri);
 
-        //保存请求时间和相关日志到请求线程中，供后面拦截器打印用，与MDC是等价的
+//        Save the request time and related logs to the request thread for later interceptors to print, which is equivalent to MDC
 //        Context ctx = Context.current();
 //        ctx = ctx.withValue(CONST.TRACK_LOG_URI_KEY, uri);
 //        ctx = ctx.withValue(CONST.TRACK_LOG_UID_KEY, trackId);
 //        ctx = ctx.withValue(CONST.TRACK_LOG_INTIME_KEY, String.valueOf(inTime));
 //        ctx = ctx.withValue(CONST.TRACK_LOG_KEY, delegateLog.toString());
 
-        //下面设置的值必须为原始值，不能自定义的变量，保持参数的纯净
         DelegateCall<ReqT, RespT> serverCallDelegate = new DelegateCall<>(serverCall);
         DelegateCallListener<ReqT, RespT> delegateCallListener = new DelegateCallListener<>(serverCallHandler.startCall(serverCallDelegate, metadata));
         return delegateCallListener;

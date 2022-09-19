@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 public class ListResponse<T> extends BaseResponse<T> {
 
-    /*数据的总条数*/
+    /*size of response data records*/
     private Integer total;
 
     public ListResponse() {
@@ -28,7 +28,7 @@ public class ListResponse<T> extends BaseResponse<T> {
         this.total = Integer.valueOf(total == null ? 0 : total);
     }
 
-    /*调用成功的方法*/
+    /*success*/
     public static <T> ListResponse<T> success() {
         return new ListResponse<>(ResponseConst.SUCCESS, ResponseConst.Msg.SUCCESS);
     }

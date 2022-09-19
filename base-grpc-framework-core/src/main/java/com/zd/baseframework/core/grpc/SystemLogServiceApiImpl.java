@@ -67,7 +67,8 @@ public class SystemLogServiceApiImpl extends ISystemLogServiceGrpc.ISystemLogSer
 
             String bizId = request.hasBizId()?request.getBizId().getValue():null;
             String code = request.hasCode()?request.getCode().getValue():null;
-            //构建查询参数
+
+            //build service request parameter
             PageBo<SystemLogBo> pageBo = iSystemLogServcie.pageSearch(SystemLogDtoTranslator.INSTANCE.toBo(request),
                     bizId,
                     code);

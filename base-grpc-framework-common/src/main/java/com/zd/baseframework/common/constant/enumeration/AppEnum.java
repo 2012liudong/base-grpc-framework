@@ -3,11 +3,11 @@ package com.zd.baseframework.common.constant.enumeration;
 /**
  * @author liudong
  * @Title: AppEnum
- * @Description 和系统相关的一些枚举值
- * - Status:数据通用状态
- * - DataSort: 数据排序标识
- * - Enable:通用状态
- * - SystemOperatorUser: 默认系统操作用户
+ * @Description enum definition only for app without business
+ * - Status: common data record status
+ * - DataSort: data record sort sign
+ * - Enable: common operator status
+ * - SystemOperatorUser: default system operator user
  * @date 2022/2/6 12:27 PM
  */
 public interface AppEnum {
@@ -16,7 +16,6 @@ public interface AppEnum {
 
     String getText();
 
-    /*通用状态值，表示0和1，语义由调用方决定*/
     enum Enable implements AppEnum {
         YES(1, "yes"),
         NO(0, "no"),
@@ -39,7 +38,6 @@ public interface AppEnum {
         }
     }
 
-    /*系统用户*/
     enum SystemOperatorUser implements AppEnum {
         SYSTEM(10000, "system"),
         ;
@@ -61,7 +59,6 @@ public interface AppEnum {
         }
     }
 
-    /*排序字段*/
     enum DataSort implements AppEnum {
         ASC(1,"asc"),
         DESC(0,"desc"),

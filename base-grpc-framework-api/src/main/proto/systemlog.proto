@@ -11,17 +11,17 @@ option java_multiple_files = true;
 
 service ISystemLogService{
 
-  //创建
+  //create API
   rpc CreateSystemLog (CreateSystemLogRequest) returns (SystemLogOperatorResponse);
 
-  //列表查询
+  //list search API
   rpc ListSystemLogByCondition (ListSystemLogRequest) returns (ListSystemLogResponse);
 
-  //分页查询
+  //pagination search API
   rpc PageSystemLog (PageSystemLogRequest) returns (PageSystemLogResponse);
 
 }
-//请求参数
+//request parameters definitions
 message CreateSystemLogRequest{
   google.protobuf.StringValue biz_id = 1;
   google.protobuf.StringValue user_id = 2;
@@ -43,7 +43,7 @@ message PageSystemLogRequest{
   google.protobuf.StringValue code = 6;
 }
 
-//返回结果
+//response result definitions
 message  SystemLogOperatorResponse{
   optional int32 status = 1;
   optional string message = 2;

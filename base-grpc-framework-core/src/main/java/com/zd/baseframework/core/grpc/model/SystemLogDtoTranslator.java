@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * @Title: com.zd.baseframework.core.grpc.model.SystemLogDtoTranslator
- * @Description grpc与service层对象转换工具类
+ * @Description proto and service convertor
  * @author liudong
  * @date 2022/6/15 8:59 PM
  */
@@ -32,11 +32,11 @@ public interface SystemLogDtoTranslator {
 
     SystemLogBo toBo(CreateSystemLogRequest var);
 
-    /*查询请求参数转换*/
+    /*query convert*/
     SystemLogQueryBo toBo(ListSystemLogRequest var);
     PageQueryBo toBo(PageSystemLogRequest var);
 
-    /*返回结果转换*/
+    /*query result convert*/
     SystemLogDto toDto(SystemLogBo var);
     List<SystemLogDto> toDto(List<SystemLogBo> var);
 }

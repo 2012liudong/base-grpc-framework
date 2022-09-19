@@ -11,10 +11,10 @@ import java.util.Date;
 /**
  * @author liudong
  * @Title: BaseEntity
- * @Description 此基类主要用于mybatis的实体定义继承用，这里固定了三个参数
- * id：数据库代理主键
- * ctime：创建时间
- * utime：更新时间
+ * @Description base class of entity(dao)
+ * id：pk
+ * ctime：record create time
+ * utime：record last modify time
  * @date 2022/1/23 6:55 PM
  */
 @Data

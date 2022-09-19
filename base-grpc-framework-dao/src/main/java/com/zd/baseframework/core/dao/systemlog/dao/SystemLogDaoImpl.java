@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * @Title: com.zd.baseframework.core.dao.systemlog.dao.SystemLogDaoImpl
- * @Description 这个是最底层服务了，不建议用trycatch，多少可以优化点性能
+ * @Description do not suggest using try-catch
  * @author liudong
  * @date 2022/6/15 9:05 PM
  */

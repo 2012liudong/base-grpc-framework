@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  * @Title: com.zd.baseframework.core.controller.request.SystemLogRequest
- * @Description 查询请求参数包装对象
+ * @Description query model bean
  * @author liudong
  * @date 2022/6/14 1:54 PM
  */

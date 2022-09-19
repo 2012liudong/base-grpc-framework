@@ -20,7 +20,7 @@ public class InterceptorRegister implements WebMvcConfigurer {
     @Autowired
     private ApperProperties apperProperties;
 
-    /*下面拦截器accessInterceptor必须放在第一位*/
+    /*Be sure put the AccessInterceptor to first*/
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(accessInterceptor).addPathPatterns(apperProperties.getHttpApiPath());

@@ -6,9 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 /**
  * @Title: com.zd.baseframework.common.spring.grpc.AbstractGrpcClientInterceptor
- * @Description 客户端拦截器
+ * @Description
  *  -- extends AbstractGrpcClientInterceptor
- *  -- @Component, 有时会有冲突，子类可以不要这个标注
+ *  -- @Component, subclasses don't have to use this annocation
  *
  * @author liudong
  * @date 2022-09-18 2:21 p.m.

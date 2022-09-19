@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * @Title: com.zd.baseframework.common.spring.advice.AbstractHttpExceptionAdvice
- * @Description 异常拦截器
+ * @Description HttpExceptionAdvice
  *  -- extends AbstractHttpExceptionAdvice
  *  -- @ControllerAdvice(value = {"com.zd.baseframework.core.controller.core"})
  * @author liudong
@@ -22,9 +22,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Slf4j
 public abstract class AbstractHttpExceptionAdvice {
 
-    /**
-     * AppException, UserException当作已知类型错误处理
-     */
     @ResponseStatus(code = HttpStatus.OK)
     @ExceptionHandler(value = {AppException.class, UserException.class})
     @ResponseBody

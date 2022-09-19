@@ -11,9 +11,9 @@ import org.slf4j.MDC;
 
 /**
  * @Title: com.zd.baseframework.common.spring.grpc.AbstractGrpcTokenInterceptor
- * @Description token拦截器
+ * @Description
  *  -- extends AbstractGrpcTokenInterceptor
- *  -- @Component, 有时会有冲突，子类可以不要这个标
+ *  -- @Component, subclasses don't have to use this annocation
  * @author liudong
  * @date 2022-09-18 2:21 p.m.
  */
@@ -46,8 +46,9 @@ public abstract class AbstractGrpcTokenInterceptor implements ServerInterceptor 
 
 /**
  * @Title: com.zd.baseframework.core.core.common.interceptor.GlobalServerInterceptorConfiguration
- * @Description grpc服务端拦截器链设置文件，可以通过指定方法的org.springframework.core.annotation.Order注解来指定执行顺序，
- * 不过好像不起作用，需要按位置来写，同时需要注意方法名称不能重复
+ * @Description GRPC server interceptor chain Settings file, can by specifying the method org.Springframework.Core annotation.
+ * Order annotations to specify execution Order, But it doesn't seem to work, depend on code position of InterceptorRegister
+ * and you need to note that the method name can not be repeated
  * -- extends AbstractAccessInterceptor
  * -- @Order(Ordered.LOWEST_PRECEDENCE)
  * -- @Configuration(proxyBeanMethods = false)

@@ -7,16 +7,18 @@ import lombok.Data;
  * @author liudong
  * @Title: com.zd.baseframework.common.entity.http.ResponseEntity
  * http status to see HttpStatus.java
- * @Description 用于controller的正常返回
+ * @Description used for restful access response
  * @date 2022/1/23 7:00 PM
  */
 @Data
 public class BaseResponse<T> {
-    /*响应状态码see ResponseConst*/
+    /*response code*/
     private Integer status;
-    /*响应概要信息*/
+
+    /*response message*/
     private String msg;
-    /*响应数据*/
+
+    /*response data records*/
     private T data;
 
     public BaseResponse() {
@@ -33,7 +35,7 @@ public class BaseResponse<T> {
         this.msg = msg;
     }
 
-    /*响应成功*/
+    /*success*/
     public static <T> BaseResponse<T> success() {
         return new BaseResponse<>(ResponseConst.SUCCESS, ResponseConst.Msg.SUCCESS);
     }
@@ -42,7 +44,7 @@ public class BaseResponse<T> {
         return new BaseResponse<>(ResponseConst.SUCCESS, ResponseConst.Msg.SUCCESS, o);
     }
 
-    /*响应失败*/
+    /*fail*/
     public static <T> BaseResponse<T> error() {
         return new BaseResponse<>(ResponseConst.FAIL, ResponseConst.Msg.FAIL);
     }

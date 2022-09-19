@@ -16,22 +16,21 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * @Title: com.shukun.data.app.interceptor.AccessLogInterceptor
- * @Description 访问日志拦截器，此拦截器只打印日志并不做真正拦截，只输出原始参数。
- *  -- extends AbstractAccessInterceptor
- *  -- @Component
+ * @Description AccessInterceptor
+ *  -- extends AbstractGrpcAccessInterceptor
+ *  -- @Component ,subclasses don't have to use this annocation
  *
- * 请求日志，格式如下：
+ * Tracklog format：
  * tid=8633542882073873365 app=app ip=0:0:0:0:0:0:0:1 uri=/systemlog/v1/list_systemlog controller=com.zd.baseframework.core.controller.core.SystemLogController#listSystemLog(SystemLogQueryRequest) inTime=1658916277205
  * tid=7532975723136214833 exec=31284
  *
- * >tid：trackid,且于跟踪栈请求
- * >app：接入应用的id
- * >token：此次访问的token
- * >ip：访问端的ip地址和端口号
- * >uri：客户端此次访问的uri
- * >method：客户端此次访问的uri的实现方法
- * >inTime：接收到请求的timestamp
- * >exec：此次请求的执行总时间
+ * >tid：trackid,Used to trace stack requests
+ * >appid：client app id
+ * >ip：client ip
+ * >uri：request uri
+ * >param：request parameter
+ * >inTime：time of begin process
+ * >exec：total time of request
  *
  * @author liudong
  * @date 2022/1/13 4:44 PM

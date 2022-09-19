@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * @Title: com.zd.baseframework.core.controller.translator.SystemLogTranslator
- * @Description http层与grpc层对象转换工具
+ * @Description proto and restful convertor
  * @author liudong
  * @date 2022/6/15 8:52 PM
  */

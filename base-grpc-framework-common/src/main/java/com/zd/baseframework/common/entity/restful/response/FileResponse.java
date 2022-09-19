@@ -17,7 +17,7 @@ import java.util.Date;
 /**
  * @author liudong
  * @Title: com.zd.baseframework.common.entity.http.FileResponseEntity
- * @Description 用于controller返回文件上传的返回值
+ * @Description used for restful access response
  * @date 2022/1/23 7:11 PM
  */
 @Slf4j

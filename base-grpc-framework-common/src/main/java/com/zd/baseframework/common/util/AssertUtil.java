@@ -5,7 +5,7 @@ import com.zd.baseframework.common.exception.AppException;
 
 /**
  * @Title: com.zd.baseframework.common.util.AppAssertUtil
- * @Description 业务断言
+ * @Description
  * @author liudong
  * @date 2022-09-16 10:34 p.m.
  */

@@ -7,9 +7,10 @@ import java.util.Locale;
 /**
  * @author liudong
  * @Title: com.zd.baseframework.common.constants.enumeration.AppEnumTranslatorUtil
- * @Description 和业务相关的mapstrct工具类，此类不能随便移位置，因为多数转换的代码是写死在字符串中的，这个工具类代理了AppEnumInitializer.java中
- * 的枚举值的获取方法，当入参为字符串时不区分大小写，在translator接口类中，采用imports={AppEnumTranslatorUtil.class}方式引入，详细的代理了如下：
- *      --SystemOperatorUser：系统用户
+ * @Description A business-related Mapstruct tool class that cannot be moved anywhere because most of the converted code
+ * is written dead in strings, this tool class proxies appenumInitializer.java .Access method of enumeration values, when
+ * the parameter for case-insensitive string, in the translator interface class, using imports = {AppEnumTranslatorUtil. Class},
+ * introducing the detailed agent as follows:：
  * @date 2022/1/28 2:30 PM
  */
 public class AppEnumTranslatorUtil {

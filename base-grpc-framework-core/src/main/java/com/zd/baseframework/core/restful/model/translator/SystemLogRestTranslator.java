@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * @Title: com.zd.baseframework.core.controller.translator.SystemLogTranslator
- * @Description http层与service层对象转换工具
+ * @Description service and restful convertor
  * @author liudong
  * @date 2022/6/15 8:52 PM
  */
@@ -27,10 +27,10 @@ import java.util.List;
 public interface SystemLogRestTranslator {
     SystemLogRestTranslator INSTANCE = Mappers.getMapper(SystemLogRestTranslator.class);
 
-    // 查询参数convert
+    // query convert
     SystemLogQueryBo toBo(SystemLogQueryRequest var1);
 
-    //结果参数convert
+    // query result convert
     SystemLogVo toVo(SystemLogBo var);
     List<SystemLogVo> toVo(List<SystemLogBo> var1);
 

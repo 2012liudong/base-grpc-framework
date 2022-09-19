@@ -21,9 +21,9 @@ import java.util.List;
 
 /**
  * @Title: com.zd.baseframework.core.restful.SystemLogController
- * @Description 示例代码，此例子是正常模式，controller-service-dao
- *  -  参数可选标注：RequestParam, RequestBody, RequestHeader, RequestPath(不建议用）, RequestPart(文件上传），可以混用
- *  -  请求模式：GetMapping, PostMapping; 其它三种不建议使用，一些系统会设置为安全限制
+ * @Description demo code: suggested, rule by Controller-Service-Dao
+ *  -  Param annocation：RequestParam, RequestBody, RequestHeader, RequestPath(no suggest）, RequestPart(fileUpload），can fixed
+ *  -  Restful annocation：GetMapping, PostMapping. Because of system secure policies, do not suggest to use 'delete, put etc.'
  * @author liudong
  * @date 2022-09-17 2:16 p.m.
  */
@@ -68,7 +68,7 @@ public class SystemLogController {
 
     @PostMapping("/v1/page")
     public PageResponse<List<SystemLogVo>> page(@RequestBody SystemLogQueryRequest pageRequest){
-        //构建查询参数
+        //build request params
         PageBo<SystemLogBo> pageBo = iSystemLogServcie.pageSearch(CommonTranslator.INSTANCE.pageReq2PageQueryBo(pageRequest),
                 pageRequest.getBizId(),
                 pageRequest.getCode());

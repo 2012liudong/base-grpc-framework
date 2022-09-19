@@ -28,7 +28,7 @@ import java.util.Date;
  * - jsonString(java.lang.String)--- com.google.protobuf.util.Value
  * - jsonString(java.lang.String)--- com.google.protobuf.util.Struct
  *
- * @Description mapstrct工具类，使用时需用uses=BaseMapStructMapper.class引入后自动生效
+ * @Description mapstrct tool class, user 'uses=BaseMapStructMapper.class'
  * @date 2022/2/6 4:24 AM
  */
 @Mapper

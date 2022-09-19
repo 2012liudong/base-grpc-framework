@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * @Title: com.zd.baseframework.core.core.systemlog.model.SystemLogModelTranslator
- * @Description service与dao层数据对象转换工具类
+ * @Description dao and service convertor
  * @author liudong
  * @date 2022/6/15 9:02 PM
  */

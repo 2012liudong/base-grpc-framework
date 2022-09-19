@@ -18,7 +18,7 @@ import java.util.Arrays;
 
 /**
  * @Title: com.shukun.data.config.RestTemplateConfig
- * @Description 用于创建http连接使用
+ * @Description Used to create HTTP connection
  * @author liudong
  * @date 2022-07-14 3:59 p.m.
  */
@@ -53,7 +53,6 @@ public class RestClient {
 
     private static void buildHttpClient(HttpComponentsClientHttpRequestFactory httpRequestFactory) {
         try {
-            // 设定请求池最大请求数256，单个route最大请求数32
             HttpClient httpClient = HCB.custom().pool(256, 32).build();
             httpRequestFactory.setHttpClient(httpClient);
         } catch (HttpProcessException e) {
