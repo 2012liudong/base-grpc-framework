@@ -1,18 +1,18 @@
 # Base-grpc-framework project
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;A framework base springBoot for grpc server develop. It also integration with Mapstrct、 Google-Grpc.
+&emsp;&emsp;A framework base springBoot for grpc server develop. It also integration with Mapstrct、 Google-Grpc.
 You can use it as base framework that onle need to develop bussness code. Main function:
 
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1、__TrackLog：__ Support log-tracking function for each thread and provide LogGenerator API
+&emsp;&emsp; - __TrackLog：__ Support log-tracking function for each thread and provide LogGenerator API
 
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;2、__Interception：__ Definition such as grpc-client、grpc-server、mvcController
+&emsp;&emsp; - __Interception：__ Definition such as grpc-client、grpc-server、mvcController
 
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;3、__ModelBeanConvent：__ Support model bean convent to each other as also grpc type
+&emsp;&emsp; - __ModelBeanConvent：__ Support model bean convent to each other as also grpc type
 
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;4、__DataOperTool：__ Base mybatis plus that make data operation easlier, specific pagination;
+&emsp;&emsp; - __DataOperTool：__ Base mybatis plus that make data operation easlier, specific pagination;
 
 
 ## 1、Quick Start
-> a、create demo database 
+> step-1、create demo database 
 
 - __createMysqlDB:__ 
   ```
@@ -37,7 +37,7 @@ You can use it as base framework that onle need to develop bussness code. Main f
     cname       varchar(32)            null
   )
 
-> b、Run through jar : java -jar -Dspring.profiles.active=dev  base-grpc-framework-application.jar
+> step-2、Run through jar : java -jar -Dspring.profiles.active=dev  base-grpc-framework-application.jar
 
 - __active:__ environment variable for app
   ```
@@ -46,10 +46,10 @@ You can use it as base framework that onle need to develop bussness code. Main f
   ```
   <artifactId>base-grpc-framework-parent</artifactId>
   
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;also can run by mainClass(com.zd.baseframework.BaseFrameworkApplication.java) with config active.profiles=dev 
+Also can run by mainClass(com.zd.baseframework.BaseFrameworkApplication.java) with config active.profiles=dev 
 
 ## 2、 Document
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- [Docment and Course](  https://blog.51cto.com/arch/5386304)
+&emsp;&emsp;- [Docment and Course](  https://blog.51cto.com/arch/5386304)
 
 ## 3、 Configuration
  ```
