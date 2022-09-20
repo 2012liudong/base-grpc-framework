@@ -1,7 +1,6 @@
 package com.zd.baseframework.common.entity.dao;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import com.zd.baseframework.common.util.LoginUserUtil;
 import org.apache.ibatis.reflection.MetaObject;
 import org.springframework.stereotype.Component;
 
@@ -21,14 +20,14 @@ public class BaseMetaObjectHandler implements MetaObjectHandler {
             // record last modify time
             this.setFieldValByName("utime", nowTime, metaObject);
         }
-        if (metaObject.hasGetter("cid")) {
-            // record creater id
-            this.setFieldValByName("cid", LoginUserUtil.getCurrentUserId(), metaObject);
-        }
-        if (metaObject.hasGetter("cname")) {
-            // record creater name
-            this.setFieldValByName("cname", LoginUserUtil.getCurrentUserName(), metaObject);
-        }
+//        if (metaObject.hasGetter("cid")) {
+//            // record creater id
+//            this.setFieldValByName("cid", LoginUserUtil.getCurrentUserId(), metaObject);
+//        }
+//        if (metaObject.hasGetter("cname")) {
+//            // record creater name
+//            this.setFieldValByName("cname", LoginUserUtil.getCurrentUserName(), metaObject);
+//        }
     }
 
     @Override
@@ -38,15 +37,15 @@ public class BaseMetaObjectHandler implements MetaObjectHandler {
             // record update time
             this.setFieldValByName("utime", nowTime, metaObject);
         }
-        if (metaObject.hasGetter("uid")) {
-            Date nowTime = new Date();
-            // record update user id
-            this.setFieldValByName("uid", LoginUserUtil.getCurrentUserId(), metaObject);
-        }
-        if (metaObject.hasGetter("uname")) {
-            Date nowTime = new Date();
-            // record update user name
-            this.setFieldValByName("uname", LoginUserUtil.getCurrentUserName(), metaObject);
-        }
+//        if (metaObject.hasGetter("uid")) {
+//            Date nowTime = new Date();
+//            // record update user id
+//            this.setFieldValByName("uid", LoginUserUtil.getCurrentUserId(), metaObject);
+//        }
+//        if (metaObject.hasGetter("uname")) {
+//            Date nowTime = new Date();
+//            // record update user name
+//            this.setFieldValByName("uname", LoginUserUtil.getCurrentUserName(), metaObject);
+//        }
     }
 }
