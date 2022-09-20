@@ -25,14 +25,29 @@ public interface Constants {
 
     int DEFAULT_PAGE_SIZE = 50;
     int DEFAULT_PAGE_NUM = 1;
+    int DEFAULT_PAGE_TOTAL = 0;
 
 
     /*interceptor: only use server module*/
-    String DEFAULT_APP_NAME = "noset";
+    //title
+    String TID_TITLE = "tid";
+    String IP_TITLE = "IP";
+    String INTIME_TITLE = "inTime";
+    String APPCODE_TITLE = "appid";
+    String TOKEN_TITLE = "token";
+    String USERAGENT_TITLE = "agent";
+    String URI_TITLE = "uri";
+    String METHOD_TITLE = "param";
+    String PARAM_TITLE = "method";
+    String EXEC_TITLE = "exec";
+    String ANALYCIS_TITLE = "act";
 
+    String EXCEPTION_BUSINESS_TITLE = "appErrMsg";
+    String EXCEPTION_SYSTEM_TITLE = "sysErrMsg";
+
+    //key
     String TID = "TID";
     String IP = "IP";
-    String SESSIONID = "SESSIONID";
     String INTIME = "INTIME";
     String URI = "URI";
     String APPCODE = "APPCODE";
@@ -41,6 +56,9 @@ public interface Constants {
     String URL = "URL";
 
     String USER_PARAM_ID = "USERID";
-    String USER_PARAM_USERNAME = "USERNAME"; //中文名称
+    String USER_PARAM_USERNAME = "USERNAME"; //real name
+
+    //default value
+    String DEFAULT_APP_NAME = "noset";
 
 }

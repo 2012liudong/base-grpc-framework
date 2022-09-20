@@ -20,7 +20,6 @@ public class PageParamReq implements Serializable {
 
     private String sortType = AppEnum.DataSort.DESC.getText();
 
-    /*key=sortProperties, value=asc||desc（to see AppEnum.DataSort*/
-    private Map<String, String> sort = new HashMap<>();
+    private Map<String, String> sorts = new HashMap<>();
 
 }

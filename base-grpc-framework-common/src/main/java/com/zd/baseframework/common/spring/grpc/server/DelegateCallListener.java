@@ -33,18 +33,18 @@ public class DelegateCallListener< ReqT, RespT> extends ForwardingServerCallList
             log.warn("ReqT message convert error");
         }
         String url = new StringBuilder()
-                .append(" uri=").append(MDC.get(Constants.URI))
-                .append(" param=").append(param)
+                .append(StrUtil.SPACE).append(Constants.URI_TITLE).append("=").append(MDC.get(Constants.URI))
+                .append(StrUtil.SPACE).append(Constants.PARAM_TITLE).append("=").append(param)
                 .toString();
         MDC.put(Constants.URL, url);
 
         StringBuilder delegateLog = new StringBuilder()
-                .append("tid=").append(MDC.get(Constants.TID))
-                .append(" appid=").append(MDC.get(Constants.APPCODE))
-                .append(" token=").append(MDC.get(Constants.TOKEN))
-                .append(" ip=").append(MDC.get(Constants.IP))
+                .append(Constants.TID_TITLE).append("=").append(MDC.get(Constants.TID))
+                .append(StrUtil.SPACE).append(Constants.APPCODE_TITLE).append("=").append(MDC.get(Constants.APPCODE))
+                .append(StrUtil.SPACE).append(Constants.TOKEN_TITLE).append("=").append(MDC.get(Constants.TOKEN))
+                .append(StrUtil.SPACE).append(Constants.IP_TITLE).append("=").append(MDC.get(Constants.IP))
                 .append(url)
-                .append(" inTime=").append(MDC.get(Constants.INTIME))
+                .append(StrUtil.SPACE).append(Constants.INTIME_TITLE).append("=").append(MDC.get(Constants.INTIME))
                 .append(StrUtil.SPACE);
         log.info(delegateLog.toString());
 

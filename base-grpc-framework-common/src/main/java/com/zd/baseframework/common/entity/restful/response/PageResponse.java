@@ -40,21 +40,12 @@ public class PageResponse<T> extends ListResponse<T> {
         this.currentPage = currentPage;
     }
 
-    /** compatibility mybatis plug， attribute mapping as below:：
-     *  -Math.toIntExact(total) // IPage.getTotal()
-     *  -Math.toIntExact(offset) // IPage.offset()
-     *  -Math.toIntExact(pageSize) // IPage.getSize()
-     *  -Math.toIntExact(currentPage)); // IPage.getCurrent()
-     * */
-    public PageResponse(Integer status, String msg, T data, Long total, Long offset, Long pageSize, Long currentPage) {
-        this(status, msg, data
-                , Math.toIntExact(total)
-                , Math.toIntExact(offset)
-                , Math.toIntExact(pageSize)
-                , Math.toIntExact(currentPage));
-    }
-
     public static <T> PageResponse<T> success() {
         return new PageResponse<>(ResponseConst.SUCCESS, ResponseConst.Msg.SUCCESS);
+    }
+
+    public static <T> PageResponse<T> success(T data, Integer total, Integer offset, Integer pageSize, Integer currentPage) {
+        return new PageResponse<>(ResponseConst.SUCCESS, ResponseConst.Msg.SUCCESS, data,
+                total, offset, pageSize, currentPage);
     }
 }

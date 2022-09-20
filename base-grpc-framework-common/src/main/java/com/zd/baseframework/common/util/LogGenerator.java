@@ -14,15 +14,13 @@ import org.slf4j.MDC;
  */
 public final class LogGenerator {
 
-    /*get tracklog*/
     public static String trackLog() {
         StringBuilder processLog = new StringBuilder()
-                .append("tid=").append(MDC.get(Constants.TID))
+                .append(Constants.TID_TITLE).append("=").append(MDC.get(Constants.TID))
                 .append(StrUtil.SPACE);
         return processLog.toString();
     }
 
-    /*get trackuid*/
     public static String trackUid() {
         return MDC.get(Constants.TID);
     }
@@ -34,7 +32,7 @@ public final class LogGenerator {
     public static String analysisLog(String act) {
         StringBuilder sb = new StringBuilder()
                 .append(" k=s")
-                .append(" act=").append(act)
+                .append(StrUtil.SPACE).append(Constants.ANALYCIS_TITLE).append("=").append(act)
                 .append(StrUtil.SPACE);
         return sb.toString();
     }

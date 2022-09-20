@@ -1,5 +1,6 @@
 package com.zd.baseframework.common.spring.advice;
 
+import cn.hutool.core.util.StrUtil;
 import com.zd.baseframework.common.constant.Constants;
 import com.zd.baseframework.common.entity.restful.response.BaseResponse;
 import com.zd.baseframework.common.exception.AppException;
@@ -27,9 +28,9 @@ public abstract class AbstractHttpExceptionAdvice {
     @ResponseBody
     public BaseResponse dealKnownException(Exception e) {
         StringBuilder errorLog = new StringBuilder()
-                .append("tid=").append(MDC.get(Constants.TID))
+                .append(Constants.TID_TITLE).append("=").append(MDC.get(Constants.TID))
                 .append(MDC.get(Constants.URL))
-                .append(" dealErrMsg=").append(e.getMessage());
+                .append(StrUtil.SPACE).append(Constants.EXCEPTION_BUSINESS_TITLE).append("=").append(e.getMessage());
 
         logUriAccessError(errorLog.toString(), e);
         if (e instanceof AppException) {
@@ -49,9 +50,9 @@ public abstract class AbstractHttpExceptionAdvice {
     @ResponseBody
     public BaseResponse afterThrowingLog(Exception e) {
         StringBuilder errorLog = new StringBuilder()
-                .append("tid=").append(MDC.get(Constants.TID))
+                .append(Constants.TID_TITLE).append("=").append(MDC.get(Constants.TID))
                 .append(MDC.get(Constants.URL))
-                .append(" afterErrMsg=").append(e.getMessage());
+                .append(StrUtil.SPACE).append(Constants.EXCEPTION_SYSTEM_TITLE).append("=").append(e.getMessage());
         logUriAccessError(errorLog.toString(), e);
         return BaseResponse.error(e.getMessage());
     }

@@ -1,9 +1,8 @@
 package com.zd.baseframework.common.entity.dao;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
-import com.zd.baseframework.common.constant.Constants;
+import com.zd.baseframework.common.util.LoginUserUtil;
 import org.apache.ibatis.reflection.MetaObject;
-import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -24,11 +23,11 @@ public class BaseMetaObjectHandler implements MetaObjectHandler {
         }
         if (metaObject.hasGetter("cid")) {
             // record creater id
-            this.setFieldValByName("cid", MDC.get(Constants.USER_PARAM_ID), metaObject);
+            this.setFieldValByName("cid", LoginUserUtil.getCurrentUserId(), metaObject);
         }
         if (metaObject.hasGetter("cname")) {
             // record creater name
-            this.setFieldValByName("cname", MDC.get(Constants.USER_PARAM_USERNAME), metaObject);
+            this.setFieldValByName("cname", LoginUserUtil.getCurrentUserName(), metaObject);
         }
     }
 
@@ -36,8 +35,18 @@ public class BaseMetaObjectHandler implements MetaObjectHandler {
     public void updateFill(MetaObject metaObject) {
         if (metaObject.hasGetter("utime")) {
             Date nowTime = new Date();
-            // 记录更新信息
+            // record update time
             this.setFieldValByName("utime", nowTime, metaObject);
+        }
+        if (metaObject.hasGetter("uid")) {
+            Date nowTime = new Date();
+            // record update user id
+            this.setFieldValByName("uid", LoginUserUtil.getCurrentUserId(), metaObject);
+        }
+        if (metaObject.hasGetter("uname")) {
+            Date nowTime = new Date();
+            // record update user name
+            this.setFieldValByName("uname", LoginUserUtil.getCurrentUserName(), metaObject);
         }
     }
 }

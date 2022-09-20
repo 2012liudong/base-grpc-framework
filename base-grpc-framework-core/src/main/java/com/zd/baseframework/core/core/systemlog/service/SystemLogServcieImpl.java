@@ -76,17 +76,16 @@ public class SystemLogServcieImpl implements ISystemLogServcie {
                 + "bizId=" + bizId
                 + " code=" + code );
         try{
-            //构建查询参数
-            IPage<SystemLogEntity> iPage = PageUtil.convertBo2IpageForReq(pageParam);
+            //build mybatis request parameter
+            IPage<SystemLogEntity> iPage = PageUtil.buildIpageRequestParameter(pageParam);
             iPage = iSystemLogDao.pageSystemLog(iPage, bizId, code);
 
             log.info(trackLog
                     + "resultSize=" + CollUtil.size(iPage.getRecords()) );
 
-            //处理返回结果
-            PageBo<SystemLogBo> reuslt = PageUtil.convertIpage2BoForRes(iPage);
-            List<SystemLogBo> databaseBos =  SystemLogBoTranslator.INSTANCE.toBo(iPage.getRecords());
-            reuslt.setData(databaseBos);
+            //handle mybatis response
+            List<SystemLogBo> systemLogBos =  SystemLogBoTranslator.INSTANCE.toBo(iPage.getRecords());
+            PageBo<SystemLogBo> reuslt = PageUtil.handleResponseToService(iPage, systemLogBos);
             return reuslt;
         } catch (AppException e) {
             throw e;

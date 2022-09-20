@@ -38,14 +38,14 @@ public interface AppEnum {
         }
     }
 
-    enum SystemOperatorUser implements AppEnum {
+    enum DefaultSystemUser implements AppEnum {
         SYSTEM(10000, "system"),
         ;
 
         private Integer code;
         private String text;
 
-        SystemOperatorUser(Integer code, String text) {
+        DefaultSystemUser(Integer code, String text) {
             this.code = code;
             this.text = text;
         }
@@ -82,8 +82,9 @@ public interface AppEnum {
 
     enum Status implements AppEnum {
         NORMAL(1, "normal"),
-        DELETE(0, "delete"),
-        DISCARD(-1, "discard"),
+        DELETE(-1, "delete"),
+        HIDDEN(0, "hidden"),
+        DISCARD(-2, "discard"),
         UNKNOW(-99, "unknow"),
         ;
 

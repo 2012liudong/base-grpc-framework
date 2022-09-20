@@ -11,8 +11,8 @@ public class GrpcTokenInterceptor extends AbstractGrpcTokenInterceptor {
     @Override
     protected LoginUser loginUser() {
         LoginUser loginUser = new LoginUser();
-        loginUser.setId(StrUtil.toString(AppEnum.SystemOperatorUser.SYSTEM.getCode()));
-        loginUser.setUserName(AppEnum.SystemOperatorUser.SYSTEM.getText());
+        loginUser.setId(StrUtil.toString(AppEnum.DefaultSystemUser.SYSTEM.getCode()));
+        loginUser.setUserName(AppEnum.DefaultSystemUser.SYSTEM.getText());
         return loginUser;
     }
 }

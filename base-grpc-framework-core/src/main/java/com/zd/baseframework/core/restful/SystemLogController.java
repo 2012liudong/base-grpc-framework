@@ -10,7 +10,6 @@ import com.zd.baseframework.core.core.systemlog.ISystemLogServcie;
 import com.zd.baseframework.core.core.systemlog.model.SystemLogBo;
 import com.zd.baseframework.core.core.systemlog.model.SystemLogQueryBo;
 import com.zd.baseframework.core.restful.model.request.SystemLogQueryRequest;
-import com.zd.baseframework.core.restful.model.translator.CommonTranslator;
 import com.zd.baseframework.core.restful.model.translator.SystemLogRestTranslator;
 import com.zd.baseframework.core.restful.model.vo.SystemLogVo;
 import lombok.extern.slf4j.Slf4j;
@@ -69,13 +68,12 @@ public class SystemLogController {
     @PostMapping("/v1/page")
     public PageResponse<List<SystemLogVo>> page(@RequestBody SystemLogQueryRequest pageRequest){
         //build request params
-        PageBo<SystemLogBo> pageBo = iSystemLogServcie.pageSearch(CommonTranslator.INSTANCE.pageReq2PageQueryBo(pageRequest),
+        PageBo<SystemLogBo> pageBo = iSystemLogServcie.pageSearch(PageUtil.buildServiceRequestParameter(pageRequest),
                 pageRequest.getBizId(),
                 pageRequest.getCode());
         List<SystemLogVo> systemLogVos = SystemLogRestTranslator.INSTANCE.toVo(pageBo.getData());
 
-        PageResponse<List<SystemLogVo>> response = PageUtil.convertBo2PageResponseForRes(pageBo);
-        response.setData(systemLogVos);
+        PageResponse<List<SystemLogVo>> response = PageUtil.handleResponseToRestful(pageBo, systemLogVos);
 
         return response;
     }

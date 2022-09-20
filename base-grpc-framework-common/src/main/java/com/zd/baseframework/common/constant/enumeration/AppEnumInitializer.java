@@ -7,10 +7,10 @@ import java.util.Map;
 
 public final class AppEnumInitializer {
 
-    public static Map<Integer, AppEnum.Enable> enableCodeMap = new HashMap<>();
-    public static Map<Integer, AppEnum.SystemOperatorUser> systemOperatorCodeMap = new HashMap<>();
-    public static Map<Integer, AppEnum.DataSort> dataSortCodeMap = new HashMap<>();
-    public static Map<Integer, AppEnum.Status> statusCodeMap = new HashMap<>();
+    protected static Map<Integer, AppEnum.Enable> enableCodeMap = new HashMap<>();
+    protected static Map<Integer, AppEnum.DefaultSystemUser> defaultSystemUserCodeMap = new HashMap<>();
+    protected static Map<Integer, AppEnum.DataSort> dataSortCodeMap = new HashMap<>();
+    protected static Map<Integer, AppEnum.Status> statusCodeMap = new HashMap<>();
 
     static{
         //--
@@ -18,8 +18,8 @@ public final class AppEnumInitializer {
             enableCodeMap.put(entry.getValue().getCode(), entry.getValue());
         }
         //--
-        for (Map.Entry<String, AppEnum.SystemOperatorUser> entry : EnumUtil.getEnumMap(AppEnum.SystemOperatorUser.class).entrySet()) {
-            systemOperatorCodeMap.put(entry.getValue().getCode(), entry.getValue());
+        for (Map.Entry<String, AppEnum.DefaultSystemUser> entry : EnumUtil.getEnumMap(AppEnum.DefaultSystemUser.class).entrySet()) {
+            defaultSystemUserCodeMap.put(entry.getValue().getCode(), entry.getValue());
         }
         //--
         for (Map.Entry<String, AppEnum.DataSort> entry : EnumUtil.getEnumMap(AppEnum.DataSort.class).entrySet()) {

@@ -38,20 +38,20 @@ public class AppEnumTranslatorUtil {
     /**
      * <SystemOperatorUser>
      */
-    public static AppEnum.SystemOperatorUser getSystemOperatorUser(String text, Integer code) {
+    public static AppEnum.DefaultSystemUser getSystemOperatorUser(String text, Integer code) {
         if ( StrUtil.isNotEmpty(text) ) {
-            return Enum.valueOf(AppEnum.SystemOperatorUser.class, text.toUpperCase(Locale.ROOT));
+            return Enum.valueOf(AppEnum.DefaultSystemUser.class, text.toUpperCase(Locale.ROOT));
         }
-        return AppEnumInitializer.systemOperatorCodeMap.get(code);
+        return AppEnumInitializer.defaultSystemUserCodeMap.get(code);
     }
 
     public static Integer getSystemOperatorUser(String text) {
-        AppEnum.SystemOperatorUser bo = AppEnumTranslatorUtil.getSystemOperatorUser(text, null);
+        AppEnum.DefaultSystemUser bo = AppEnumTranslatorUtil.getSystemOperatorUser(text, null);
         return bo==null ? null : bo.getCode();
     }
 
     public static String getSystemOperatorUser(Integer code) {
-        AppEnum.SystemOperatorUser bo = AppEnumTranslatorUtil.getSystemOperatorUser(null, code);
+        AppEnum.DefaultSystemUser bo = AppEnumTranslatorUtil.getSystemOperatorUser(null, code);
         return bo==null ? null : bo.getText();
     }
 

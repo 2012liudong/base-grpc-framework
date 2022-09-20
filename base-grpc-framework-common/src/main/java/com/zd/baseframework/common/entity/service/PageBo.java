@@ -8,15 +8,15 @@ import java.util.List;
 /**
  * @author songpj
  * @Title: net.shukun.universe.core.cases.model.null.java
- * @Description
+ * @Description for query result entity convert bo
  * @date 2022/5/10 16:43
  */
 @Data
 public class PageBo<T> {
 
-    private Integer count = 0;
+    private Integer count = Constants.DEFAULT_PAGE_TOTAL;
 
-    private Integer offset = 0;
+    private Integer offset = Constants.DEFAULT_PAGE_TOTAL;
 
     private Integer pageSize = Constants.DEFAULT_PAGE_SIZE;
 
