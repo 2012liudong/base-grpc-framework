@@ -38,12 +38,6 @@
             <groupId>com.zd</groupId>
             <artifactId>base-grpc-framework-common</artifactId>
             <version>${project.parent.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-log4j12</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.zd</groupId>
@@ -54,12 +48,6 @@
             <groupId>com.zd</groupId>
             <artifactId>base-grpc-framework-dao</artifactId>
             <version>${project.parent.version}</version>
-        </dependency>
-
-        <!--nacos-->
-        <dependency>
-            <groupId>com.alibaba.boot</groupId>
-            <artifactId>nacos-config-spring-boot-starter</artifactId>
         </dependency>
 
         <!--mybatis，mysql device-->
@@ -114,6 +102,12 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

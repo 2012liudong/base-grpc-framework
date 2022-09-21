@@ -20,7 +20,6 @@
     <!--third package version definition including plugs、datadb、tools、grpc、mysql and others-->
     <properties>
         <!--configuration-->
-        <nacos.version>0.2.8</nacos.version>
         <junit.test.version>4.12</junit.test.version>
 
         <!--plugs-->
@@ -30,9 +29,6 @@
         <lombok.mapstruct.binding.version>0.1.0</lombok.mapstruct.binding.version>
 
         <mapstruct.version>1.4.2.Final</mapstruct.version>
-
-        <httpclient.version>4.5.8</httpclient.version>
-        <httpclient.util.version>1.0.4</httpclient.util.version>
 
         <maven.kr.motd>1.6.2</maven.kr.motd>
         <maven.org.xolstice>0.6.1</maven.org.xolstice>
@@ -48,31 +44,15 @@
 
         <!--others-->
         <fastjson.version>1.2.60</fastjson.version>
-        <guava.version>30.1-jre</guava.version>
-        <commons-lang3.version>3.9</commons-lang3.version>
-        <commons-compress.version>1.18</commons-compress.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <!--nacos-->
-            <dependency>
-                <groupId>com.alibaba.boot</groupId>
-                <artifactId>nacos-config-spring-boot-starter</artifactId>
-                <version>${nacos.version}</version>
-            </dependency>
-
             <!--tools-->
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
             </dependency>
 
             <dependency>
@@ -91,25 +71,6 @@
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-processor</artifactId>
                 <version>${mapstruct.version}</version>
-            </dependency>
-
-            <!--httpclient-->
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>${httpclient.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.arronlong</groupId>
-                <artifactId>httpclientutil</artifactId>
-                <version>${httpclient.util.version}</version>
-            </dependency>
-
-            <!-- compress tools -->
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-compress</artifactId>
-                <version>${commons-compress.version}</version>
             </dependency>
 
             <!--Serializable-->

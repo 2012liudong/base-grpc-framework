@@ -5,7 +5,6 @@ import com.google.protobuf.*;
 import com.google.protobuf.util.JsonFormat;
 import com.google.protobuf.util.Timestamps;
 import com.zd.baseframework.common.constant.Constants;
-import org.mapstruct.Mapper;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -31,7 +30,6 @@ import java.util.Date;
  * @Description mapstrct tool class, user 'uses=BaseMapStructMapper.class'
  * @date 2022/2/6 4:24 AM
  */
-@Mapper
 public class MapStructMapper {
 
     /**================java basic type translator================*/

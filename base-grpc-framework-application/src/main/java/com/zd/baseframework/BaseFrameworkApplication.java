@@ -4,8 +4,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.TimeZone;
 
@@ -18,8 +16,6 @@ import java.util.TimeZone;
 @SpringBootApplication(scanBasePackages = {"com.zd.baseframework", "cn.hutool.extra.spring"})
 @MapperScan({"com.zd.baseframework"})
 @EnableConfigurationProperties
-@EnableScheduling
-@EnableAsync
 public class BaseFrameworkApplication {
 
     public static void main(String []args){
