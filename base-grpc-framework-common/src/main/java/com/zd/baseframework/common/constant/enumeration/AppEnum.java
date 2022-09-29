@@ -29,10 +29,12 @@ public interface AppEnum {
             this.text = text;
         }
 
+        @Override
         public Integer getCode() {
             return this.code;
         }
 
+        @Override
         public String getText() {
             return this.text;
         }
@@ -50,10 +52,12 @@ public interface AppEnum {
             this.text = text;
         }
 
+        @Override
         public Integer getCode() {
             return this.code;
         }
 
+        @Override
         public String getText() {
             return this.text;
         }
@@ -71,10 +75,12 @@ public interface AppEnum {
             this.text = text;
         }
 
+        @Override
         public Integer getCode() {
             return this.code;
         }
 
+        @Override
         public String getText() {
             return this.text;
         }
@@ -96,10 +102,12 @@ public interface AppEnum {
             this.text = text;
         }
 
+        @Override
         public Integer getCode() {
             return this.code;
         }
 
+        @Override
         public String getText() {
             return this.text;
         }

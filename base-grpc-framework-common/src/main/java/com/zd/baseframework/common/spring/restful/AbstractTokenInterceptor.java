@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public abstract class AbstractTokenInterceptor implements HandlerInterceptor {
 
+    @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         String token = MDC.get(Constants.TOKEN);
 

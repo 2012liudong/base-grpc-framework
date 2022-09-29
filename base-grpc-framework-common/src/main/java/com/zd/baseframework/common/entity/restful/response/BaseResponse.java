@@ -12,13 +12,13 @@ import lombok.Data;
  */
 @Data
 public class BaseResponse<T> {
-    /*response code*/
+    /**response code*/
     private Integer status;
 
-    /*response message*/
+    /**response message*/
     private String msg;
 
-    /*response data records*/
+    /**response data records*/
     private T data;
 
     public BaseResponse() {
@@ -35,7 +35,7 @@ public class BaseResponse<T> {
         this.msg = msg;
     }
 
-    /*success*/
+    /**success*/
     public static <T> BaseResponse<T> success() {
         return new BaseResponse<>(ResponseConst.SUCCESS, ResponseConst.Msg.SUCCESS);
     }
@@ -44,7 +44,7 @@ public class BaseResponse<T> {
         return new BaseResponse<>(ResponseConst.SUCCESS, ResponseConst.Msg.SUCCESS, o);
     }
 
-    /*fail*/
+    /**fail*/
     public static <T> BaseResponse<T> error() {
         return new BaseResponse<>(ResponseConst.FAIL, ResponseConst.Msg.FAIL);
     }

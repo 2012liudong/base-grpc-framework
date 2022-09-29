@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "app-properties", ignoreUnknownFields = true)
 public class ApperProperties {
 
-    /*token keyName*/
+    /**token keyName*/
     private String tokenKey = "TOKEN";
 
-    /*URL to be intercepted, support regular*/
+    /**URL to be intercepted, support regular*/
     private String httpApiPath = "/*";
 
 }
