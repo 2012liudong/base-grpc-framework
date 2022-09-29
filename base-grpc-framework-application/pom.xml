@@ -40,7 +40,7 @@
 
     <build>
         <plugins>
-            <!--用于spring打包用，在发布时必须使用-->
+            <!-- use spring to package when be delayed -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

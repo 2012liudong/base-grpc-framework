@@ -17,6 +17,14 @@
         <version>2.2.2.RELEASE</version>
     </parent>
 
+    <modules>
+        <module>base-grpc-framework-common</module>
+        <module>base-grpc-framework-api</module>
+        <module>base-grpc-framework-dao</module>
+        <module>base-grpc-framework-core</module>
+        <module>base-grpc-framework-application</module>
+    </modules>
+
     <!--third package version definition including plugs、datadb、tools、grpc、mysql and others-->
     <properties>
         <!--configuration-->
@@ -183,14 +191,6 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-
-    <modules>
-        <module>base-grpc-framework-common</module>
-        <module>base-grpc-framework-api</module>
-        <module>base-grpc-framework-dao</module>
-        <module>base-grpc-framework-core</module>
-        <module>base-grpc-framework-application</module>
-    </modules>
 
     <build>
         <plugins>

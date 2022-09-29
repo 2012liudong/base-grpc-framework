@@ -58,7 +58,6 @@
             <artifactId>tomcat-embed-core</artifactId>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
 
 </project>

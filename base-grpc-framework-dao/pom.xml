@@ -13,7 +13,6 @@
     <packaging>jar</packaging>
 
     <dependencies>
-
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
@@ -43,7 +42,6 @@
             <version>${project.parent.version}</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
 
 </project>

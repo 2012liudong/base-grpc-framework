@@ -38,7 +38,7 @@
 
     </dependencies>
     <build>
-        <!--取得本地系统信息的插件-->
+        <!--get system config-->
         <extensions>
             <extension>
                 <groupId>kr.motd.maven</groupId>

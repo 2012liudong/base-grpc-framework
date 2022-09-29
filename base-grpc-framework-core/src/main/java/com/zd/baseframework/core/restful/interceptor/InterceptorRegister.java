@@ -1,6 +1,8 @@
 package com.zd.baseframework.core.restful.interceptor;
 
 import com.zd.baseframework.common.spring.ApperProperties;
+import com.zd.baseframework.common.spring.restful.AbstractAccessInterceptor;
+import com.zd.baseframework.common.spring.restful.AbstractTokenInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,10 +14,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class InterceptorRegister implements WebMvcConfigurer {
 
     @Autowired
-    private AccessInterceptor accessInterceptor;
+    private AbstractAccessInterceptor accessInterceptor;
 
     @Autowired
-    private TokenInterceptor tokenInterceptor;
+    private AbstractTokenInterceptor tokenInterceptor;
 
     @Autowired
     private ApperProperties apperProperties;
